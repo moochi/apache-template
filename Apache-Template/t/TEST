@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+# WARNING: this file is generated, do not edit
+# generated on Mon Oct  6 14:46:39 2008
+# 01: /usr/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread-multi/Apache/TestConfig.pm:955
+# 02: /usr/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread-multi/Apache/TestConfig.pm:1045
+# 03: /usr/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread-multi/Apache/TestRun.pm:1284
+# 04: Makefile.PL:10
+
+BEGIN { eval { require blib && blib->import; } }
+
+use strict;
+use warnings FATAL => 'all';
+
+use lib qw(
+);
+
+
+use Apache::TestRunPerl ();Apache::TestRunPerl->new->run(@ARGV);

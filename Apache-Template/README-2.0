@@ -1,0 +1,33 @@
+this is the mod_perl 2.0 port for the Apache::Template module, based on
+Apache::Template 0.09.  note that the big difference in userland for
+this modules is that you need to use PerlLoadModule to load
+Apache::Template in httpd.conf, not PerlModule:
+
+  PerlLoadModule Apache::Template.
+
+other than that, it should behave the same as with mod_perl 1.0, with
+the caveats listed below.
+
+outside of the new test suite, this module consists of the original
+Apache::Template 0.09 code modified as little as possible with the
+sole purpose of getting it to run under mod_perl 2.0.  in other words,
+while the addition of the test suite exposed a few bugs in Apache::Template,
+the bugs that were uncovered remain unfixed - this is a port, not a
+rewrite.
+
+also, keep in mind that I am not responsible for bugs or coredumps that may
+occur as a result of the other packages this module depends upon, namely
+mod_perl 2.0 and libapreq 2.0.  I am also not responsible for problems with
+the logic of Apache::Template, such as its thread safety (or lack thereof) - 
+at the moment, I get core dumps with the worker mpm under various conditions,
+especially when running t/05ct.t by itself.  so, if you choose to use this
+module it might be wise to stick with the prefork mpm.
+
+this module will likely never reach CPAN for reasons that you can discover
+if you google hard enough.
+
+other than that, if you find any place where this port doesn't behave as 
+it did under mod_perl 1.0 please let me know.  additional karma points to 
+those that add test cases which work under mod_perl 1.0 but not 2.0.
+
+--Geoff

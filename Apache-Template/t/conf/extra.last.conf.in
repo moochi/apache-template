@@ -1,0 +1,40 @@
+<IfModule mod_perl.c>
+  <IfModule mod_apreq2.c>
+
+    PerlLoadModule Apache::Template
+
+    TT2Trim             On
+    TT2EvalPerl         On
+    TT2IncludePath      @ServerRoot@/templates
+    TT2Debug            On
+
+    Alias /tt2 @DocumentRoot@
+    <Location /tt2>
+        SetHandler              perl-script
+        PerlResponseHandler     Apache::Template
+    </Location>
+
+    Alias /headers @DocumentRoot@
+    <Location /headers>
+        SetHandler              perl-script
+        PerlResponseHandler     Apache::Template
+        TT2Headers              all
+    </Location>
+
+    Alias /params @DocumentRoot@
+    <Location /params>
+        SetHandler              perl-script
+        PerlResponseHandler     Apache::Template
+        TT2Params               all
+    </Location>
+
+    Alias /ct @DocumentRoot@
+    <Location /ct>
+        SetHandler              perl-script
+        PerlResponseHandler     Apache::Template
+        TT2Headers              type
+        TT2ContentType          text/xml
+    </Location>
+
+  </IfModule>
+</IfModule>
