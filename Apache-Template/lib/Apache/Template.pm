@@ -257,7 +257,7 @@ sub handler {
                                              $r->per_dir_config) || { };
         warn "setup service for hostname: ", $r->hostname, "  ($cfg):\n", 
              dump_hash($cfg), "\n" if $DEBUG;
-        Template::Config->service($cfg) || do {
+        Template::Config->service(%$cfg) || do {
             $r->log_error(Template::Config->error(), ' ', $r->filename());
             return Apache2::Const::SERVER_ERROR;
         };
